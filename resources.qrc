@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>global_blue_tech.jpg</file>
+    </qresource>
+</RCC>
