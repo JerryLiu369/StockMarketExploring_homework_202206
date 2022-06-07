@@ -159,6 +159,7 @@ void MainWindow::on_K_button_2_clicked()
     }
 
     QChart *chart=new QChart();
+    chart->setAnimationOptions(QChart::SeriesAnimations);
     chart->addSeries(seriesorigin);
     chart->addSeries(seriespredict);
     chart->legend()->setVisible(true);
@@ -310,8 +311,6 @@ void MainWindow::on_S_2_end_clicked()
 
 void MainWindow::on_actionK_meansjullei_triggered()
 {
-    QMessageBox::information(this,"提示","功能正在维护中！");
-    return;
     callkmeans();
 }
 

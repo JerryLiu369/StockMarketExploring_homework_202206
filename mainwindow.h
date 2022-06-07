@@ -7,7 +7,6 @@
 #include <QtCharts/QBarCategoryAxis>
 #include <QtCharts/QCandlestickSeries>
 #include <QtCharts/QValueAxis>
-#include <QtCore/QDateTime>
 #include <QtCharts>
 QT_CHARTS_USE_NAMESPACE
 #include "filereader.h"

@@ -3,6 +3,11 @@
 
 #include <QDialog>
 
+#include<QFile>
+#include <QtCharts>
+QT_CHARTS_USE_NAMESPACE
+#include "dkm/dkm.hpp"
+
 namespace Ui {
 class kmeans;
 }
@@ -22,6 +27,7 @@ private slots:
 
 private:
     Ui::kmeans *ui;
+    bool end_flag=true;
 };
 
 #endif // KMEANS_H
