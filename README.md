@@ -1,6 +1,6 @@
 # Introduction
-this is a homework for Program-Designing II of RUC
-Screenshot:
+this is a homework for Program-Designing II of RUC  
+A screenshot:
 ![program](https://user-images.githubusercontent.com/86883627/172663371-954e4092-1372-4f21-98b9-ba4c43ed82e7.png)
 # Appendix:Requires
 1.简述
