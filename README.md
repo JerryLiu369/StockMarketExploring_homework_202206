@@ -1,5 +1,5 @@
 # Introduction
-this is a homework for program-designing II.
+this is a homework for Program-Designing II of RUC
 # Appendix:Requires
 1.简述
      对股票数据进行外排序、指标计算、索引、聚类分析(可选)、可视化等处理。
