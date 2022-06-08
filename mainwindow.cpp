@@ -21,6 +21,11 @@ void MainWindow::callreader()
     reader.exec();
 }
 
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    S_2_running=false;
+}
+
 void MainWindow::on_action_triggered()
 {
     callreader();
@@ -229,7 +234,7 @@ void MainWindow::on_S_button_clicked()
 
 void MainWindow::on_S_2_start_clicked()
 {
-    this->S_2_running=true;
+    S_2_running=true;
     ui->S_2_status->setText("准备中...");
     ui->S_2_status->setStyleSheet(QString("background-color: rgb(85, 255, 0);"));
 
@@ -304,7 +309,7 @@ void MainWindow::on_S_2_start_clicked()
 
 void MainWindow::on_S_2_end_clicked()
 {
-    this->S_2_running=false;
+    S_2_running=false;
     ui->S_2_status->setText("未滚动...");
     ui->S_2_status->setStyleSheet(QString("background-color: rgb(85, 255, 255);"));
 }

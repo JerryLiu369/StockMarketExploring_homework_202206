@@ -23,7 +23,10 @@
    <string notr="true">#K{border-style:ridge;border-color: rgb(85, 170, 255);border-width:6px;border-radius:10px}
 #K_2{border-style:ridge;border-color: rgb(85, 170, 255);border-width:6px;border-radius:10px}
 #S{border-style:ridge;border-color: rgb(85, 170, 255);border-width:6px;border-radius:10px}
-#S_2{border-style:ridge;border-color: rgb(85, 170, 255);border-width:6px;border-radius:10px}</string>
+#S_2{border-style:ridge;border-color: rgb(85, 170, 255);border-width:6px;border-radius:10px}
+#S_yr_2{background-color: rgb(240, 240, 240);}
+#S_mon_2{background-color: rgb(240, 240, 240);}
+</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
