@@ -1,8 +1,10 @@
 # Introduction
-this is a homework for Program-Designing II of RUC  
+This is a homework for Program-Designing II of RUC  
+  
 A screenshot:
-![program](https://user-images.githubusercontent.com/86883627/172663371-954e4092-1372-4f21-98b9-ba4c43ed82e7.png)
-# Appendix:Requires
+![program](https://user-images.githubusercontent.com/86883627/172663371-954e4092-1372-4f21-98b9-ba4c43ed82e7.png)  
+  
+# Appendix:作业要求
 1.简述
      对股票数据进行外排序、指标计算、索引、聚类分析(可选)、可视化等处理。
 
