@@ -44,3 +44,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     dkm/LICENSE.md
+
+RESOURCES += \
+    pic.qrc

@@ -20,6 +20,9 @@ public:
     explicit kmeans(QWidget *parent = nullptr);
     ~kmeans();
 
+protected:
+    void closeEvent(QCloseEvent *);
+
 private slots:
     void on_pushButton_clicked();
 

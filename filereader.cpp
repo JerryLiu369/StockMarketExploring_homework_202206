@@ -5,6 +5,7 @@ FileReader::FileReader(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::FileReader)
 {
+    this->setWindowFlags(Qt::Dialog | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
     ui->setupUi(this);
 }
 
