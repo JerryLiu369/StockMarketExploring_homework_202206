@@ -8,6 +8,7 @@
 #include<QFileDialog>
 #include<QDir>
 #include<math.h>
+#include<QtMath>
 
 namespace Ui {
 class FileReader;

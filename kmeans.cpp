@@ -29,7 +29,9 @@ void kmeans::on_pushButton_clicked()
     while(!sharpe.atEnd())
     {
         QStringList linels=QString(sharpe.readLine()).split(',');
-        data.push_back({linels[3].toDouble(),linels[4].toDouble()});
+        qreal mean=linels[3].toDouble();
+        qreal sd=linels[4].toDouble();
+        if(mean>-0.06&&mean<0.06&&sd<0.12)data.push_back({mean,sd});
     }
     std::random_shuffle(data.begin(),data.end());
     sharpe.close();
@@ -54,7 +56,7 @@ void kmeans::on_pushButton_clicked()
                 QColor(Qt::yellow),
                 QColor(Qt::gray),
                 QColor(Qt::blue),
-                QColor(Qt::darkBlue)
+                QColor("#A27E36")
     };
     for(int i=0;i<9;i++){
         QScatterSeries *temp = new QScatterSeries();
@@ -65,13 +67,47 @@ void kmeans::on_pushButton_clicked()
         chart->addSeries(temp);
     }
     chart->createDefaultAxes();
+
+    /*
+                             v4
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     -.023384        -.35985
+ 5%    -.0115851       -.349373
+10%    -.0078976       -.325249       Obs             613,849
+25%    -.0037067       -.324942       Sum of Wgt.     613,849
+
+50%     .0000567                      Mean           .0004866
+                        Largest       Std. Dev.      .0130231
+75%     .0041332        1.28376
+90%     .0091571        1.52169       Variance       .0001696
+95%     .0132541        2.73128       Skewness       95.21884
+99%     .0273964        4.56203       Kurtosis       28540.15
+
+                             v5
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0073016       4.68e-07
+ 5%     .0112397       7.22e-07
+10%     .0135353       7.84e-07       Obs             613,849
+25%     .0180452       8.21e-07       Sum of Wgt.     613,849
+
+50%     .0248626                      Mean           .0282546
+                        Largest       Std. Dev.      .0213631
+75%     .0343356         3.2273
+90%     .0458472        3.32199       Variance       .0004564
+95%     .0549695        4.61189       Skewness       68.11651
+99%     .0837288        4.75981       Kurtosis       11569.69
+
+     */
+
     QValueAxis *axisX = qobject_cast<QValueAxis *>(chart->axes(Qt::Horizontal).at(0));
-    axisX->setRange(-0.1,0.1);
+    axisX->setRange(-0.06,0.06);
     axisX->setTitleText("平均值");
     axisX->setLabelFormat("%.2f");
 
     QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).at(0));
-    axisY->setRange(0,0.2);
+    axisY->setRange(0,0.12);
     axisY->setTitleText("标准差");
     axisY->setLabelFormat("%.2f");
 
@@ -79,11 +115,13 @@ void kmeans::on_pushButton_clicked()
     ui->widget->setChart(chart);
 
     int i=0;
+    auto labelsiter=labels.begin();
     for(auto &&point : data){
         if(end_flag)return;
-        serieses[labels[i]]->append(QPointF(point[0],point[1]));
+        serieses[*labelsiter]->append(QPointF(point[0],point[1]));
         i++;
-        if(i%100==0){
+        labelsiter++;
+        if(i%1000==0){
             QApplication::processEvents();
         }
     }
@@ -92,5 +130,4 @@ void kmeans::on_pushButton_clicked()
 void kmeans::on_pushButton_2_clicked()
 {
     end_flag=true;
-    this->close();
 }

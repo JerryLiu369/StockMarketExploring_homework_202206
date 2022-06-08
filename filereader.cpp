@@ -161,11 +161,11 @@ void FileReader::sort()
             qreal sum=0,ssum=0;
             for(const qreal &num : buffer[mon]) {
                 sum+=num;
-                ssum+=num*num;
+                ssum+=pow(num,2);
             }
             //写入：月份，代码，夏普指数，均值，标准差
             if(ssum/n-pow(sum/n,2)==0)continue;
-            sharpe.write((mon+","+stock+","+QString::number(sum/std::sqrt(n*ssum-sum*sum))+","+QString::number(sum/n)+","+QString::number(std::sqrt(ssum/n-pow(sum/n,2)))+"\n").toUtf8().data());
+            sharpe.write((mon+","+stock+","+QString::number(sum/sqrt(n*ssum-sum*sum))+","+QString::number(sum/n)+","+QString::number(std::sqrt(ssum/n-pow(sum/n,2)))+"\n").toUtf8().data());
         }
 
         //进度条
