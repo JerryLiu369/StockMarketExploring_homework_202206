@@ -1,10 +1,9 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
-#include "filereader.h"
-#include<QString>
-#include<QDir>
+#include<QObject>
 
-QStringList datasplit(FileReader* ithis,const QDir& dir,const QString& filename);
+qreal dotmut(const QList<qreal> &a,const QList<qreal> &b);
+QList<QList<qreal>> gencoef();
 
 #endif // TOOLS_H

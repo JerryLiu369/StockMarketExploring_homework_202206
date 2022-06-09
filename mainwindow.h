@@ -12,6 +12,7 @@ QT_CHARTS_USE_NAMESPACE
 #include "filereader.h"
 #include "sharpecontainer.h"
 #include "kmeans.h"
+#include "tools.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

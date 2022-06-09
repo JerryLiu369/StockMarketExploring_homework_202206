@@ -129,38 +129,68 @@ void MainWindow::on_K_button_2_clicked()
         all=QString(before.readAll()).split('\n',QString::SkipEmptyParts)+all;
         before.close();
     }
+
     //预测数据
-    QList<QPair<QString,qreal>> origin;
-    QList<QPair<QString,qreal>> predict;
+    QList<QPair<QString,QList<qreal>>> origin;
+    QList<QPair<QString,QList<qreal>>> predict;
     for(int i=0;i<all.length();i++)
     {
         QStringList temp=all[i].split(',');
-        origin.append(QPair<QString,qreal>(temp[0],temp[5].toDouble()));
+        origin.append(QPair<QString,QList<qreal>>(temp[0],{temp[2].toDouble(),temp[3].toDouble(),temp[4].toDouble(),temp[5].toDouble()}));
     }
     for (int i=6;i<origin.length();i++) {
-        qreal temp=0;
-        temp+=0.95091870*origin[i-1].second;
-        temp+=0.02809760*origin[i-2].second;temp+=0.00002270*pow(origin[i-2].second,2);
-        temp+=0.02697790*origin[i-3].second;temp+=-0.00001790*pow(origin[i-3].second,2);
-        temp+=-0.02451320*origin[i-4].second;
-        temp+=0.00155620*origin[i-5].second;
-        temp+=0.01668100*origin[i-6].second;temp+=-0.00000661*pow(origin[i-6].second,2);
-        temp+=0.00078870;
-        predict.append(QPair<QString,qreal>(origin[i].first,temp));
+        QList<qreal> temp{0,0,0,0};
+        QList<QList<qreal>> coef=gencoef();
+        /*
+         * L1open L2open L3open L4open L5open L6open L1open2 L2open2 L3open2 L4open2 L5open2 L6open2
+         * L1high L2high L3high L4high L5high L6high L1high2 L2high2 L3high2 L4high2 L5high2 L6high2
+         * L1low L2low L3low L4low L5low L6low L1low2 L2low2 L3low2 L4low2 L5low2 L6low2
+         * L1close L2close L3close L4close L5close L6close L1close2 L2close2 L3close2 L4close2 L5close2 L6close2
+         */
+        QList<qreal> predata{
+                    origin[i-1].second[0],origin[i-2].second[0],origin[i-3].second[0],
+                    origin[i-4].second[0],origin[i-5].second[0],origin[i-6].second[0],
+                    pow(origin[i-1].second[0],2),pow(origin[i-2].second[0],2),pow(origin[i-3].second[0],2),
+                    pow(origin[i-4].second[0],2),pow(origin[i-5].second[0],2),pow(origin[i-6].second[0],2),
+                    origin[i-1].second[1],origin[i-2].second[1],origin[i-3].second[1],
+                    origin[i-4].second[1],origin[i-5].second[1],origin[i-6].second[1],
+                    pow(origin[i-1].second[1],2),pow(origin[i-2].second[1],2),pow(origin[i-3].second[1],2),
+                    pow(origin[i-4].second[1],2),pow(origin[i-5].second[1],2),pow(origin[i-6].second[1],2),
+                    origin[i-1].second[2],origin[i-2].second[2],origin[i-3].second[2],
+                    origin[i-4].second[2],origin[i-5].second[2],origin[i-6].second[2],
+                    pow(origin[i-1].second[2],2),pow(origin[i-2].second[2],2),pow(origin[i-3].second[2],2),
+                    pow(origin[i-4].second[2],2),pow(origin[i-5].second[2],2),pow(origin[i-6].second[2],2),
+                    origin[i-1].second[3],origin[i-2].second[3],origin[i-3].second[3],
+                    origin[i-4].second[3],origin[i-5].second[3],origin[i-6].second[3],
+                    pow(origin[i-1].second[3],2),pow(origin[i-2].second[3],2),pow(origin[i-3].second[3],2),
+                    pow(origin[i-4].second[3],2),pow(origin[i-5].second[3],2),pow(origin[i-6].second[3],2),
+                    1
+        };
+        for (int i=0;i<4;i++) {
+            temp[i]=dotmut(predata,coef[i]);
+        }
+        predict.append(QPair<QString,QList<qreal>>(origin[i].first,temp));
     }
     for (int i=0;i<6;i++) {
         origin.removeFirst();
     }
+
     //作图
     QLineSeries *seriesorigin = new QLineSeries();
     seriesorigin->setName("真实价格");
     QLineSeries *seriespredict = new QLineSeries();
     seriespredict->setName("预测价格");
     int ind=0;
+    int type=ui->K_type_2->text().toInt();
+    if(type>4||type<1)
+    {
+        QMessageBox::warning(this,"类型错误","预测类型不存在！");
+        return;
+    }
     for (int i=std::max(0,origin.length()-nowlen);i<origin.length();i++) {
         ind++;
-        seriesorigin->append(ind,origin[i].second);
-        seriespredict->append(ind,predict[i].second);
+        seriesorigin->append(ind,origin[i].second[type-1]);
+        seriespredict->append(ind,predict[i].second[type-1]);
     }
 
     QChart *chart=new QChart();

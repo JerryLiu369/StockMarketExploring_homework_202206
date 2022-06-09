@@ -23,14 +23,16 @@ SOURCES += \
     kmeans.cpp \
     main.cpp \
     mainwindow.cpp \
-    sharpecontainer.cpp
+    sharpecontainer.cpp \
+    tools.cpp
 
 HEADERS += \
     dkm/dkm.hpp \
     filereader.h \
     kmeans.h \
     mainwindow.h \
-    sharpecontainer.h
+    sharpecontainer.h \
+    tools.h
 
 FORMS += \
     filereader.ui \
