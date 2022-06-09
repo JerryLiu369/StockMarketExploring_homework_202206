@@ -6,11 +6,11 @@ Keywords: sorting, data visualization, k-means clustering
 A screenshot:
 ![program](https://user-images.githubusercontent.com/86883627/172663371-954e4092-1372-4f21-98b9-ba4c43ed82e7.png)  
 
-Data requirements:  
+Sample data:  
 
 ![image](https://user-images.githubusercontent.com/86883627/172778910-b779de4d-fc8d-4378-9078-f8075f4e057c.png)
 
-读入数据需包含前六列且顺序相同
+读入数据为csv格式，需包含前六列且顺序相同
   
 # Appendix:作业要求
 1.简述
