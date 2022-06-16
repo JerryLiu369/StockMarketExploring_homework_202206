@@ -148,7 +148,7 @@ void MainWindow::on_K_button_2_clicked()
          * L1close L2close L3close L4close L5close L6close L1close2 L2close2 L3close2 L4close2 L5close2 L6close2
          */
         QList<qreal> predata{
-                    origin[i-1].second[0],origin[i-2].second[0],origin[i-3].second[0],
+            origin[i-1].second[0],origin[i-2].second[0],origin[i-3].second[0],
                     origin[i-4].second[0],origin[i-5].second[0],origin[i-6].second[0],
                     pow(origin[i-1].second[0],2),pow(origin[i-2].second[0],2),pow(origin[i-3].second[0],2),
                     pow(origin[i-4].second[0],2),pow(origin[i-5].second[0],2),pow(origin[i-6].second[0],2),
@@ -236,9 +236,14 @@ void MainWindow::on_S_button_clicked()
     }
     std::sort(fetch.begin(),fetch.end());
     QBarSeries *series = new QBarSeries();
-    for(int i=0;i<std::min(10,fetch.length());i++)
+    ui->S_table->setColumnCount(1);
+    ui->S_table->setRowCount(30);
+    ui->S_table->horizontalHeader()->setVisible(false);
+    ui->S_table->verticalHeader()->setVisible(false);
+    for(int i=0;i<std::min(30,fetch.length());i++)
     {
         SharpeContainer stock=fetch[i];
+        ui->S_table->setItem(0,i,new QTableWidgetItem(stock.getCode()));
         QBarSet *tempset=new QBarSet(stock.getCode());
         tempset->append(stock.getSharpe());
         series->append(tempset);
@@ -255,8 +260,7 @@ void MainWindow::on_S_button_clicked()
     QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).at(0));
     axisY->setLabelFormat("%.2f");
 
-    chart->legend()->setVisible(true);
-    chart->legend()->setAlignment(Qt::AlignRight);
+    chart->legend()->setVisible(false);
 
     ui->S_widget->setRenderHint(QPainter::Antialiasing);
     ui->S_widget->setChart(chart);
@@ -305,9 +309,14 @@ void MainWindow::on_S_2_start_clicked()
         ui->S_mon_2->setText(monstr);
         std::sort(fetch.begin(),fetch.end());
         QBarSeries *series = new QBarSeries();
-        for(int i=0;i<std::min(10,fetch.length());i++)
+        ui->S_table_2->setColumnCount(1);
+        ui->S_table_2->setRowCount(30);
+        ui->S_table_2->horizontalHeader()->setVisible(false);
+        ui->S_table_2->verticalHeader()->setVisible(false);
+        for(int i=0;i<std::min(30,fetch.length());i++)
         {
             SharpeContainer stock=fetch[i];
+            ui->S_table_2->setItem(0,i,new QTableWidgetItem(stock.getCode()));
             QBarSet *tempset=new QBarSet(stock.getCode());
             tempset->append(stock.getSharpe());
             series->append(tempset);
@@ -324,8 +333,7 @@ void MainWindow::on_S_2_start_clicked()
         QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).at(0));
         axisY->setLabelFormat("%.2f");
 
-        chart->legend()->setVisible(true);
-        chart->legend()->setAlignment(Qt::AlignRight);
+        chart->legend()->setVisible(false);
 
         ui->S_widget_2->setRenderHint(QPainter::Antialiasing);
         ui->S_widget_2->setChart(chart);

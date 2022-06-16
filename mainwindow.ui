@@ -917,6 +917,21 @@
          </item>
         </layout>
        </item>
+       <item>
+        <widget class="QTableWidget" name="S_table_2">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -1126,6 +1141,21 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="S_table">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

@@ -14,7 +14,7 @@
    <string>数据读取</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#FileReader{border-image: url(:/pic/mmexport1654762454233.png);}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -30,7 +30,7 @@
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>14</pointsize>
+         <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
@@ -54,19 +54,6 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <spacer name="verticalSpacer_8">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>300</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QPushButton" name="pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -83,7 +70,7 @@
          <property name="font">
           <font>
            <family>微软雅黑</family>
-           <pointsize>14</pointsize>
+           <pointsize>16</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -93,6 +80,32 @@
           <string>打开文件</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>600</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>600</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QWidget" name="widget" native="true">
@@ -105,21 +118,7 @@
          <property name="styleSheet">
           <string notr="true">image: url(:/pic/images.png);</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2"/>
         </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>300</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </item>
@@ -149,7 +148,7 @@
          <property name="font">
           <font>
            <family>微软雅黑</family>
-           <pointsize>10</pointsize>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
@@ -203,7 +202,7 @@
          <property name="font">
           <font>
            <family>微软雅黑</family>
-           <pointsize>10</pointsize>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
@@ -257,7 +256,7 @@
          <property name="font">
           <font>
            <family>微软雅黑</family>
-           <pointsize>10</pointsize>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">

@@ -8,7 +8,7 @@
 #include<QFileDialog>
 #include<QDir>
 #include<math.h>
-#include<QtMath>
+#include<QGraphicsDropShadowEffect>
 
 namespace Ui {
 class FileReader;
