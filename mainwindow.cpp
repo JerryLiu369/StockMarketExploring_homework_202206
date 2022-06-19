@@ -282,7 +282,7 @@ void MainWindow::on_S_2_start_clicked()
         data[linels[0]].append(SharpeContainer(linels[1],linels[2].toDouble()));
     }
     sharpe.close();
-    for (QString &month : data.keys()) {
+    for (const QString &month : data.keys()) {
         std::sort(data[month].begin(),data[month].end());
     }
     ui->S_2_status->setText("滚动中...");
