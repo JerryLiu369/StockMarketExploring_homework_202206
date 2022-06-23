@@ -16,9 +16,11 @@ FileReader::~FileReader()
 
 void FileReader::on_pushButton_clicked()
 {
+    ui->pushButton->setEnabled(false);
     split();
     sort();
     index();
+    ui->pushButton->setEnabled(true);
 
     QMessageBox::information(this,"初始化完成","数据读入与排序已完成！");
     this->close();
