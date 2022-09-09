@@ -1,5 +1,5 @@
 # Introduction
-This is a homework for Program-Designing II of RUC, Write with QT    
+This is a homework for Program-Designing II of RUC, written with QT    
 
 Keywords: sorting, data visualization, k-means clustering
   
